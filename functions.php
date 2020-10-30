@@ -134,7 +134,6 @@ add_action( 'wp_enqueue_scripts', 'start_scripts' );
 add_action( 'wp_ajax_emoteButton', 'emoteButton_handleAjax' );
 add_action( 'wp_ajax_nopriv_emoteButton', 'emoteButton_handleAjax' );
 
-
 function emoteButton_handleAjax() {
     $buttons = ["Joy", "Sad", "Like", "Dislike"];
     $new_num_upvotes = array();
@@ -221,7 +220,7 @@ add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
  * @return string (Maybe) modified "read more" excerpt string.
  */
 function wpdocs_excerpt_more( $more ) {
-    return ' [...]';
+    return '...';
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
 

@@ -6,13 +6,31 @@
  */
 ?>
 
-<?php get_header(); ?>
+<?php 
+	get_header(); 
 
+	function display_sidebar($cat) {
+		$query = array( 'date_query' => array( array( 'after' => '90 days ago' ) ), 'posts_per_page' => 5, 'cat' => $cat, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) ; 
+		$the_query = new WP_Query( $query );    // Checking for 4 newest articles
+		while ($the_query -> have_posts()) : $the_query -> the_post()
+		?>
+			<a href="<?php the_permalink(); ?>">
+				<li>
+					<?php the_title(); ?><br /><span><?php the_time('j.n.'); ?> | <?php the_author(); ?></span>
+				</li>
+			</a>
+		<?php
+			endwhile;
+			wp_reset_postdata(); 
+	}
+?>
+
+	
    <!-- Row of 4 newest articles
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
       <!-- START OF ARTICLES ROW -->
-      <main class="container-fluid article-front" id="main">
+      <main class="container-fluid" id="main-page">
 
       <!--TEMPORARY FOR BANNER  -->
         <!-- <div class="container">
@@ -25,7 +43,7 @@
                 
           </div>
         </div> -->
-        <div class="container">
+        <!-- <div class="container">
           <div class="row">
             <?php 
               $myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/'; 
@@ -35,18 +53,21 @@
               <img src="<?php echo $image; ?>" class="top-banner" alt="Roseprint" />
             </a>
           </div>
-        </div>
+        </div> -->
         
       <!-- END TEMP -->
      
       
-        <div class="container">
-          <div class="row"> <!-- / 3x .col-lg-4 ** Main articles - Forcing equal height on all 4 columns ** -->
+        <div class="container" id="main-articles">
+          <div class="row"> 
+          	<div class="col-md-1">
 
+          	</div>
+          	<div class="col-md-6"> <!-- article column -->
               <?php
               $query = array (
-                  'posts_per_page' => 4,
-                  'cat' => 5,
+                  'posts_per_page' => 6,
+                  'cat' => array(5, 6, 7),
                   'orderby' => 'date',
                   'order'   => 'DESC',
                 ); 
@@ -55,6 +76,7 @@
                while ($the_query -> have_posts()) : $the_query -> the_post();
                         /* Checking if the post actually has a featured image */
                        /* Checking for attachments to find thumbnail picture */
+                       	$tags = get_the_tags();
                         $attachments = new Attachments( 'attachments' ); /* pass the instance name */ 
                         $my_index = 0; 
                         if( $attachment = $attachments->get_single( $my_index ) ) :  /* Only need first attachment as thumbnail picture - in case there is none default.jpg is set as backup */
@@ -62,152 +84,129 @@
                         else:
                           $image = $myImagesDir . "default.jpg";
                         endif;
+
+                        if (get_the_category()[0]->term_id == 6) {
+                        	?>
+                        	<article class="opinion-piece">
+				            	<a href="<?php the_permalink(); ?>">
+				            		<div class="kolumni content">
+				            			<div class="photo">
+				            				<?php userphoto_the_author_photo(); ?>
+				            			</div>
+				            			<div class="kolumni-header">
+					            			<h2><?php the_title(); ?></h2>
+					            			<p><?php the_time('j.n.'); ?> | Pääkirjoitus | <?php the_author(); ?></p>
+				            			</div>
+				            		</div>
+				            	</a>
+				            </article>
+				            <?php
+                        }
+
+                        elseif (get_the_category()[0]->term_id == 7) {
+                        	?>
+                        	<article class="opinion-piece">
+				            	<a href="<?php the_permalink(); ?>">
+				            		<div class="kolumni content">
+				            			<div class="photo">
+				            				<?php userphoto_the_author_photo(); ?>
+				            			</div>
+				            			<div class="kolumni-header">
+					            			<h2><?php the_title(); ?></h2>
+					            			<p><?php the_time('j.n.'); ?> | Kolumni | <?php the_author(); ?></p>
+				            			</div>
+				            		</div>
+				            	</a>
+				            </article>
+				            <?php
+                        } else {
                           
                ?>
-
-               <a href="<?php the_permalink(); ?>">
-               <article class="col-md-3"> <!-- article column -->
-                <img class="img-article-feature" src="<?php echo $image; ?>" alt="feature image" />
-                <h4><?php the_title(); ?><br /> <span class="text-muted"><?php the_time('j-n-Y'); ?></span></h4>
-                <?php the_excerpt(__('(Lue lisää)')); ?>
-              </article> 
-            </a>
-              <?php
-              $i++; 
-               if ($i%4==0){   /* Starting a new row when 4 articles have been displayed */
-                echo '</div>';
-                echo '<div class="row">';
-               }
-               
+	              <article>
+		              <a href="<?php the_permalink(); ?>">
+		                <img src="<?php echo $image; ?>" alt="feature image" />
+		              </a>
+		                <div class="content">
+		               		<a href="<?php the_permalink(); ?>">
+		                		<h2><?php the_title(); ?></h2>
+		                		<p><?php the_time('j.n.'); ?> | Juttu | <?php the_author() ?></p>
+		                	</a>
+	                	
+	                	<div class="content__tags">	                			
+		                		<?php
+		                			foreach ($tags as $tag) {
+		                				echo '<a href="' . get_tag_link($tag) . '"><div class="content__tags tag">' . ucfirst($tag->name) .'</div></a>';
+		                			}
+	            				?>       				
+            			</div>
+	                </div>
+	              </article>
+            	
+            <?php
+          		}
                endwhile;
-               wp_reset_postdata();
-              
-              ?>
+               wp_reset_postdata();         
+            ?>  
+              </div> 
+              	
+              <div class="col-md-4" id="sidebar"> <!-- sidebar column -->
+	            	<aside>
+	            		<div class="sidebar-header">
+		            		<h2>Luetuimmat</h2>
+		            	</div>
+		            	<div class="sidebar-content">
+		            		<ul>
+				            	<?php display_sidebar(5); ?>
+		               		</ul>
+		            	</div>
+            		</aside>
+            		<aside>
+		            	<div class="sidebar-header">
+		            		<h2>Pääkirjoitus</h2>
+		            	</div>
+		            	<div class="sidebar-content">
+		            		<ul>
+				            	<?php display_sidebar(6); ?>
+               				</ul>
+		            	</div>
+            		</aside>
+            		<aside>
+		            	<div class="sidebar-header">
+		            		<h2>Kolumni</h2>
+		            	</div>
+		            	<div class="sidebar-content">
+		            		<ul>
+				            	<?php display_sidebar(7); ?>
+               				</ul>
+		            	</div>
+            		</aside>
+            		<aside>
+		            	<div class="sidebar-content">
+		            		<iframe class="google-map" src="https://maps.google.com/maps?q=60.566981,27.194273&amp;num=1&amp;ie=UTF8&amp;t=m&amp;ll=60.566264,27.194209&amp;spn=0.007381,0.018239&amp;z=15&amp;output=embed"></iframe>
+		            		<div class="sidebar-content-levikki">
+			            		<h2>Reimari ilmestyy kerran viikossa keskiviikkoisin!</h2>
+						          <p class="lead">Maariankatu 14 | 49400 Hamina</p>
+						          <p>Levikki: 15.800 kpl
+						          | Jakelu: Jakelusuora Oy
+						          | Jakelualue: Hamina, Miehikkälä, Virolahti, Liikkala ja Ruotila</p>
+						    </div>
+		            	</div>
+            		</aside>
+            	</div>
+            	<div class="col-md-1">
 
-          </div><!-- /.row -->
-        </div><!-- /.container -->
-        <div class="container">
-          <div class="row">
-            <?php 
-              $myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/'; 
-              $image = $myImagesDir . "auki.png";
-            ?>
-            <img src="<?php echo $image; ?>" class="top-banner" alt="Reimarin asiakaspalvelu on suljettu toistaiseksi" />
+          		</div>
+         	
                 
           </div>
-        </div>
+		<div class="row banner">
+	            <?php 
+	              $myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/'; 
+	              $image = $myImagesDir . "auki.png";
+	            ?>
+            <img src="<?php echo $image; ?>" class="top-banner" alt="Reimarin asiakaspalvelu on suljettu toistaiseksi" />
+         	</div><!-- /.row -->
+        </div><!-- /.container -->
       </main>
-
-      <!-- START OF COLUMNS ROW -->
-      <div class="container-fluid kolumni">
-      <div class="container">
-        <!-- Two columns of text below the jumbotron -->
-        <div class="row row-eq-height">
-          <div class="col-md-6">
-            <div class="col-lg-12 sub-col">
-            <?php
-              $query = array (
-                  'posts_per_page' => 1,
-                  'cat' => 6,
-                  'orderby' => 'date',
-                  'order'   => 'DESC',
-                );
-               $the_query = new WP_Query( $query );     // Checking for newest pääkirjoitus
-               while ($the_query -> have_posts()) : $the_query -> the_post();
-            ?>  
-              <h2 class="kolumni-feature">Pääkirjoitus</h2> 
-              <p class="author"><?php the_author(); ?> <span class="label label-primary"><?php the_time('j-n-Y'); ?></span></p>
-            </div>
-            
-            <div class="col-lg-12 sub-col">
-              <h4><?php the_title(); ?></h4>  
-              <?php the_excerpt(__('(Lue lisää)')); ?>
-              <p><a class="btn btn-default" href="<?php the_permalink(); ?>">Lue lisää</a></p>   
-            </div>
-         
-            <?php
-               endwhile;
-               wp_reset_postdata();
-            ?>
-         
-          </div><!-- /.col-lg-6 ** Pääkirjoitus and Kolumni ** -->
-          <div class="col-md-6">
-            <div class="col-lg-12 sub-col">
-            <?php
-              $query = array (
-                  'posts_per_page' => 1,
-                  'cat' => 7,
-                  'orderby' => 'date',
-                  'order'   => 'DESC',
-                );
-               $the_query = new WP_Query( $query );     // Checking for newest kolumni
-               while ($the_query -> have_posts()) : $the_query -> the_post();
-            ?>  
-              <h2 class="kolumni-feature">Kolumni</h2> 
-              <p class="author"><?php the_author(); ?> <span class="label label-primary"><?php the_time('j-n-Y'); ?></span></p>
-            </div>
-            
-            <div class="col-lg-12 sub-col">
-              <h4><?php the_title(); ?></h4>  
-              <?php the_excerpt(__('(Lue lisää)')); ?> 
-              <p><a class="btn btn-default" href="<?php the_permalink(); ?>">Lue lisää</a></p>   
-            </div>
-
-            <?php
-               endwhile;
-               wp_reset_postdata();
-            ?>
-
-         </div><!-- /.col-lg-6 ** Pääkirjoitus and Kolumni ** -->
-       </div> <!-- end of first row -->
-      </div>
-      </div>
-
-      <!-- START THE FEATURETTES -->
-
-      <div class="container-fluid kolumni">
-      <div class="container">
-      <!-- <div class="row featurette1 well well-sm">
-        <div class="col-md-8">
-          <?php echo do_shortcode('[custom-facebook-feed]'); ?>
-        </div>
-        <div class="col-md-4">
-           <div class="fb-page" data-href="https://www.facebook.com/Reimari.fi" data-hide-cover="false" data-show-facepile="true" data-show-posts="false">
-            <div class="fb-xfbml-parse-ignore">
-              <blockquote cite="https://www.facebook.com/facebook">
-                <a href="https://www.facebook.com/Reimari.fi">Facebook</a>
-                </blockquote>
-            </div>
-          </div>
-        </div>
-      </div> --> <!-- end of featurette row -->
-      
-      <!--
-      <div class="row featurette1 well well-sm">
-        <div class="col-md-4">
-          <img src="<?php // echo $myImagesDir; ?>twitter-logo.png" />
-        </div>
-        <div class="col-md-8">
-          <h2>Reimari on nyt myös Twitterissä</h2>
-        </div>
-      </div>  end of featurette row -->   
-      
-      <div class="row featurette1 well well-sm">
-        <div class="col-md-4">
-          <iframe class="google-map" src="https://maps.google.com/maps?q=60.566981,27.194273&amp;num=1&amp;ie=UTF8&amp;t=m&amp;ll=60.566264,27.194209&amp;spn=0.007381,0.018239&amp;z=15&amp;output=embed"></iframe>
-        </div> 
-        <div class="col-md-8">
-          <h2>Reimari ilmestyy kerran viikossa keskiviikkoisin!</h2>
-          <p class="lead">Maariankatu 14 | 49400 Hamina</p>
-          <p>Levikki: 15.800 kpl
-          | Jakelu: Jakelusuora Oy
-          | Jakelualue: Hamina, Miehikkälä, Virolahti, Liikkala ja Ruotila</p>
-        </div>
-        
-      </div>  <!-- end of featurette row -->      
-      </div>  <!-- end of featurette container -->
-      </div> <!-- end of fluid container -->
-
-      <!-- /END THE FEATURETTES -->
 
 <?php get_footer(); ?>
