@@ -64,9 +64,9 @@ get_header(); ?>
         
         <h4>JAKELU</h4>
         
-        <p>Jakelusuora Oy</p>
+        <p>SSM Itä-Suomi Oy</p>
         <p>Jakeluhäiriöilmoitukset:<br />
-        puh. 02 900 10046 (klo 9-16)<br />
+        puh. 02 900 10042 (klo 9-16)<br />
         <a href="http://www.jakelupalaute.fi/reimari" target="_blank">www.jakelupalaute.fi</a></p>
         
         <h4>JAKELUALUE</h4>
