@@ -49,7 +49,7 @@
             <p class="footer-first-line">ETKÖ SAANUT LEHTEÄ?</p>
             
             <p>Jakeluhäiriöilmoitukset:<br />
-            puh. 02 900 10046 (klo 9-16)<br />
+            puh. 02 900 10042 (klo 9-16)<br />
             <a href="http://www.jakelupalaute.fi/reimari" target="_blank">www.jakelupalaute.fi/reimari</a></p>
             <p>Reimarin irtonumeroita voi hakea Reimarin konttorista.</p>
           </div>
