@@ -9,9 +9,32 @@
 <?php 
 	get_header(); 
 
-	function display_sidebar($cat) {
+	function display_sidebar_part($cat) {
+		?>
+			<aside>
+	        	<div class="sidebar-header">
+	        		<?php 
+	        			switch($cat) {
+	        				case 5: ?>
+	        					<h2>Luetuimmat</h2>
+	        				<?php
+	        				break;
+	        				case 6: ?>
+	        					<h2>Pääkirjoitus</h2>
+	        				<?php
+	        				break;
+	        				case 7: ?>
+	        					<h2>Kolumni</h2>
+	        				<?php
+	        				break;
+	        			}
+	        		?>
+            	</div>
+            	<div class="sidebar-content">
+        			<ul>
+		<?php	
 		$query = array( 'date_query' => array( array( 'after' => '90 days ago' ) ), 'posts_per_page' => 5, 'cat' => $cat, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) ; 
-		$the_query = new WP_Query( $query );    // Checking for 4 newest articles
+		$the_query = new WP_Query( $query );    
 		while ($the_query -> have_posts()) : $the_query -> the_post()
 		?>
 			<a href="<?php the_permalink(); ?>">
@@ -21,7 +44,12 @@
 			</a>
 		<?php
 			endwhile;
-			wp_reset_postdata(); 
+			wp_reset_postdata();
+		?> 
+					</ul>
+				</div>
+			</aside>
+		<?php
 	}
 ?>
 
@@ -150,37 +178,12 @@
               </div> 
               	
               <div class="col-md-4" id="sidebar"> <!-- sidebar column -->
-	            	<aside>
-	            		<div class="sidebar-header">
-		            		<h2>Luetuimmat</h2>
-		            	</div>
-		            	<div class="sidebar-content">
-		            		<ul>
-				            	<?php display_sidebar(5); ?>
-		               		</ul>
-		            	</div>
-            		</aside>
-            		<aside>
-		            	<div class="sidebar-header">
-		            		<h2>Pääkirjoitus</h2>
-		            	</div>
-		            	<div class="sidebar-content">
-		            		<ul>
-				            	<?php display_sidebar(6); ?>
-               				</ul>
-		            	</div>
-            		</aside>
-            		<aside>
-		            	<div class="sidebar-header">
-		            		<h2>Kolumni</h2>
-		            	</div>
-		            	<div class="sidebar-content">
-		            		<ul>
-				            	<?php display_sidebar(7); ?>
-               				</ul>
-		            	</div>
-            		</aside>
-            		<aside>
+	            	<?php 
+		            	display_sidebar_part(5); 
+			           	display_sidebar_part(6); 
+		           		display_sidebar_part(7); 
+               		?>
+               		<aside>
 		            	<div class="sidebar-content">
 		            		<iframe class="google-map" src="https://maps.google.com/maps?q=60.566981,27.194273&amp;num=1&amp;ie=UTF8&amp;t=m&amp;ll=60.566264,27.194209&amp;spn=0.007381,0.018239&amp;z=15&amp;output=embed"></iframe>
 		            		<div class="sidebar-content-levikki">
