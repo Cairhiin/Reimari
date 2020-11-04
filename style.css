@@ -959,6 +959,12 @@ textarea {
 	box-shadow: 0 0 5px #ddd;
 }
 
+#post-background > div {
+	-moz-box-shadow: 0 0 5px #ddd;
+	-webkit-box-shadow: 0 0 5px #ddd;
+	box-shadow: 0 0 5px #ddd;
+}
+
 .post-background-archive {
 	background-color: #fff;
 	padding: 0px;
@@ -1233,16 +1239,24 @@ textarea {
 	margin: 0 0 1.5em;
 }
 
-.author-date.text-muted-juttu {
-	padding: 10px 70px 10px 70px;
-	margin: 10px 0px 30px 0px;
-	color: #333;
-	font-size: 16px;
+.author-date,
+.author-date a:link, 
+.author-date a:active, 
+.author-date a:visited,
+.author-date a:hover 
+{
+	margin: 0;
+	color: #666;
 }
 
 .entry-header {
 	background-color: #fff;
 	padding-top: 10px;
+	border-top: 3px solid #A6B7C9;
+}
+
+#yritykset-single.entry-header {
+	border: 0;
 }
 
 .google-map {
@@ -1258,9 +1272,13 @@ textarea {
 	color: black;
 }
 
+.category-nakoislehti {
+	background-color: white;
+}
+
 .entry-header h1 {
-	margin: 0px 70px 0px 70px;
-	padding: 20px 0px 20px 0px;
+	margin: 0 70px;
+	padding: 10px 0 0 0;
 }
 
 .page-header h1 {
@@ -1268,7 +1286,7 @@ textarea {
 }
 
 .entry-meta p {
-	margin: 10px 70px 10px 70px;
+	margin: 0 70px 10px 70px;
 }
 
 .entry-meta {
@@ -1280,9 +1298,32 @@ textarea {
 	margin: 5px 0px 5px 0px;
 }
 
-.entry-content p, .entry-footer p , .entry-content ul , .entry-content h4, .entry-content table {
-	margin: 10px 70px 10px 70px;
+.entry-content p {
+	font-size: 16px;
+	margin: 5px 70px 20px 70px;
 }
+
+.entry-footer p , .entry-content ul , .entry-content h4, .entry-content table {
+	margin: 10px 70px;
+}
+
+.entry-content .google-auto-placed.ap_container,
+.entry-content #mys-wrapper,
+.entry-content .adsbygoogle,
+.entry-content .mys-content
+{
+	margin: 2em 0 5em 0;
+	background-color: white;
+}
+
+.entry-content .mys-wrapper::before,
+.entry-content .adsbygoogle::before 
+{
+	content: "——————————— Mainos ———————————";
+	color: #E6EAEF;
+	line-height: 40px
+}
+
 
 .entry-content table {
 	width: 90%;
@@ -1300,6 +1341,8 @@ textarea {
 .entry-content h4 {
 	padding-top: 15px;
 	color: #333;
+	margin-bottom: 0;
+	font-size: 20px;
 }
 
 .entry-content ul {
@@ -1333,7 +1376,7 @@ textarea {
 	color: #f2f2f2;
 	margin: 0px;
 	padding: 5px 10px 5px 10px;
-	font-size: 13px;
+	font-size: 15px;
 }
 
 .slider-image-caption {
@@ -1717,15 +1760,14 @@ body.boxed .site {
 }
 
 .jutut, .nakoislehti {
-	background-color: #f2f2f2;
+	background-color: #E6EAEF;
 	color: #000;
-	padding: 20px 0px 10px 0px;
 }
 
 .kuntavaalit {
 	background-color: #f2f2f2;
 	color: #000;
-	padding: 0px 0px 10px 0px;
+	padding: 0 0 10px 0;
 }
 
 .center {
@@ -2474,20 +2516,14 @@ h4.special-header {
 		font-size: 13px;
 	}
 	
-	.entry-header h1 {
-		margin: 0px 10px 0px 10px;
-		padding: 20px 0px 20px 0px;
-	}
-
-	
 	.entry-content p, .entry-content h4, .entry-content table {
-		margin: 10px 10px 10px 10px;
+		margin: 0 10px 10px 10px;
 	}
 
 	h4.special-header {
 		background-color: #8da0ab;
 		color: #fff;
-		padding: 10px 10px 10px 10px;
+		padding: 10px;
 		margin: 20px 0px 0px 0px;
 	}
 
@@ -3183,6 +3219,10 @@ New Front Page
 	margin: 2em 0;
 }
 
+#post-background {
+	margin: 2em 0;
+}
+
 #main-articles article img {
 	border: none;
 	padding: 0;
@@ -3575,10 +3615,4 @@ New Jutut Page
 
 .scribd_iframe_embed {
 	height: 1450px;
-}
-
-/* AdsByGoogle */
-
-.adsbygoogle {
-	margin: 2em 0 2em 0;
 }

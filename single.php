@@ -10,7 +10,8 @@ get_header(); ?>
         <div class="container">
 
         <?php
-       
+        	
+
         	$categories = get_the_category();
 			$category_id = $categories[0]->cat_ID;
 
@@ -18,7 +19,7 @@ get_header(); ?>
 			<div id="post-background" class="col-md-7" role="main">
 			
 		<?php else: ?>		
-			<div id="post-background" class="col-xs-12" role="main">
+			<div class="col-xs-12" role="main">
 		<?php endif; ?>		
 		<?php while ( have_posts() ) : the_post(); ?>
 
@@ -76,11 +77,13 @@ get_header(); ?>
 
 		<?php endwhile; // end of the loop. ?>
 			</div><!-- #main -->
-			<!-- #sidebar col-md-3 -->
-			<?php if ($category_id != 8) : ?>
-				<?php get_sidebar(); ?>
 			
-			<div class="col-md-2" id="tertiary">
+			 <div class="col-md-4" id="sidebar">
+				<?php if ($category_id != 8) : ?>
+				<?php get_sidebar(); ?>
+			</div><!-- #sidebar -->
+
+			<div class="col-md-1" id="tertiary">
 				<!-- #advertisement area -->
 				
 				<!-- TEMPORARY BANNER 
