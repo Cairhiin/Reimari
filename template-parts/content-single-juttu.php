@@ -11,35 +11,15 @@
 		<div class="entry-meta">
 
 			<h1><?php the_title(); ?></h1>
-			<p class="author-date text-muted-juttu author-date-header">
-				<i class="fa fa-calendar-o" aria-hidden="true"></i> <?php the_time('j.n.Y'); ?>
-                &nbsp;&nbsp;&nbsp;<i class="fa fa-pencil" aria-hidden="true"></i> <?php the_author_posts_link(); ?>
-                &nbsp;&nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true"></i> Juttu
-				<?php $postID = get_the_ID(); ?>
+			<p class="author-date">
+				<?php the_time('j.n.Y'); ?>
+                &nbsp;|&nbsp;
+                <?php 
+	                the_author_posts_link(); 
+					$postID = get_the_ID(); 
+				?>
 			</p>
 			<div class="addthis_sharing_toolbox"><?php echo do_shortcode('[addthis tool="addthis_inline_share_toolbox_below"]'); ?></div>
-			<?php
-
-
-				// Getting the first paragraph of the post
-				global $post;
-				$content = $post->post_content;
-				$str = wpautop( $content );
-				$str = substr( $str, 0, strpos( $str, '</p>' ) + 4 );
-				$str = strip_tags($str, '<a><strong><em>');
-				if (!has_shortcode( $content, 'foogallery' ))  :             
-			?>
-				<p class="intro"><?php echo $str; ?></p>
-
-			<?php
-				endif;
-				// Removing the first paragraph of the post
-				$content = $post->post_content;
-				$text = wpautop( $content );
-				$text = substr( $text, strpos( $text, '</p>' ) + 4 );
-			?>
-
-			</p>
 		</div><!-- .entry-meta -->
 
 			<!-- get Attachments -->
@@ -50,14 +30,14 @@
 				$myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/';
 				$attachments = new Attachments( 'attachments', $postID );
 
-				if( $attachment = $attachments->get_single( $my_index ) ) :  /* Only need first attachment as story preview picture - in case there is none default.jpg is set as backup */
+				if( $attachment = $attachments->get_single( $my_index ) ) :  /* Only need first attachment as story preview picture - in case there is none, default.jpg is set as backup */
                           $image = $attachments->src( 'full', $my_index );
                         else:
                           $image = $myImagesDir . "default.jpg";
                         endif;
 			?>
 
-		<?php if (!has_shortcode( $content, 'foogallery' ))  :  ?>
+		<?php if (!has_shortcode( $content, 'foogallery' ))  :  /* in case there's no foogallery attached to the post */ ?>
 			<img class="img-no-markup" src="<?php echo $image; ?>" />
 		<?php endif; ?>
 		<?php
@@ -70,30 +50,9 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-<?php
 
-$inc = '';
-if ($_SERVER['REQUEST_URI'] == '/2020/02/25/myos-pyhallon-ja-turkian-kylat-kaavailevat-digiloikan-ottamista/' || $_SERVER['REQUEST_URI'] == '/2020/02/25/jussin-market-sulkee-ovensa/' || $_SERVER['REQUEST_URI'] == '/2020/02/18/selvitys-valmistui-itainen-rantarata-vaihtoehdoista-kannattavin/' || $_SERVER['REQUEST_URI'] == '/2020/02/25/koulutyo-jo-alkanut-moduulikoulussa-husulan-koulun-liikuntasali-ja-ruokala-valmistumassa/')
-{
-	ob_start();
-	@include '/var/www/customers/hteksticom/public_html//wordpress/wp-content/themes/reimari/images/spacer.png';
-	$inc = ' ' . ob_get_contents();
-	ob_end_clean();
-}
+		<?php the_content(); ?>
 
-$text = str_replace('arvoa.', 'arvoa.' .  $inc, $text);
-$text = str_replace('asiakaspalvelussa.', 'asiakaspalvelussa.' .  $inc, $text);
-$text = str_replace('tavaraliikenteen rataosuus.', 'tavaraliikenteen rataosuus.' .  $inc, $text);
-$text = str_replace('tiloja.', 'tiloja.' .  $inc, $text);
-
-?>
-		<?php 
-                       if (has_shortcode( $content, 'foogallery' )):  
-			     the_content(); 
-		       else:
-			     echo $text . $inc; 
-
-		endif; ?>
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<ins class="adsbygoogle"
 			     style="display:block; text-align:center;"
@@ -124,21 +83,10 @@ $text = str_replace('tiloja.', 'tiloja.' .  $inc, $text);
   				}
   				$tag_string = implode(", ", $tag_array);
 
-        			$the_query = new WP_Query( array( 'tag__in' => $tag_array, 'posts_per_page' => 11, 'cat' => 5, 'orderby' => 'date', 'order' => 'DESC' ) );
+        			$the_query = new WP_Query( array( 'tag__in' => $tag_array, 'posts_per_page' => 10, 'cat' => 5, 'offset' => 1, 'orderby' => 'date', 'order' => 'DESC' ) );
         			$counter = 0;
         			$postCount = $the_query->post_count;
-        			while ($the_query -> have_posts()) : $the_query -> the_post(); ?>
-        				<?php
-        					if ($post->ID == $postID):
-        						if ($counter == 0):
-        						?>
-        							<div> <!-- In case of no related articles -->
-        							<div>
-        					<?php
-        						endif;
-        						$postCount--; // Making certain that the original story is not calculated in the amount of related articles
-        					endif;
-        					if ($post->ID != $postID):
+        			while ($the_query -> have_posts()) : $the_query -> the_post(); 
         					if (($counter == 0) && ($post->ID != NULL)): ?>
         					<div class="related"> <!-- Related articles -->
         						<div id="related">
@@ -161,7 +109,6 @@ $text = str_replace('tiloja.', 'tiloja.' .  $inc, $text);
         							</div>
         						</div>
         						</a>
-        				<?php endif; ?>
         			<?php endwhile; ?>
         			</div>
 

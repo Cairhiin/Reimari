@@ -17,10 +17,9 @@
                 $content = $post->post_content; 
                 $str = wpautop( $content );
             ?>    
-            <p class="author-date text-muted-juttu author-date-header">
-                <i class="fa fa-calendar-o" aria-hidden="true"></i> <?php the_time('j.n.Y'); ?>
-                &nbsp;&nbsp;&nbsp;<i class="fa fa-pencil" aria-hidden="true"></i> <?php the_author_posts_link(); ?> 
-                &nbsp;&nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true"></i> <?php if ($thisCat == 7) : ?> Kolumni <?php else: ?> Pääkirjoitus <?php endif; ?>
+            <p class="author-date">
+                <?php the_time('j.n.Y'); ?>
+                &nbsp;|&nbsp;<?php the_author_posts_link(); ?> 
                 <?php $postID = get_the_ID(); ?>
             </p>
 		</div><!-- .entry-meta -->
