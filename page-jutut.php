@@ -7,28 +7,15 @@
 get_header(); ?>
 
 	<main class="container-fluid article-front" id="main-jutut">
-        
-        <!--TEMPORARY FOR BANNER  -->
-        <!-- <div class="container">
-          <div class="row">
-            <?php 
-              $myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/'; 
-              $image = $myImagesDir . "hamina-vanhat-ilmakuvat.png";
-            ?>
-            <a href="http://www.reimari.fi/ilmakuvat/" target="_self"><img src="<?php echo $image; ?>" class="top-banner" alt="Hamina ilmakuvat" /></a>
-                
-          </div>
-        </div> -->
+
 
         <div class="container">
           <div class="row">
             <?php 
               $myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/'; 
-              $image = $myImagesDir . "Banner_roseprint.png";
+              $image = $myImagesDir . "auki.png";
             ?>
-            <a href="/yritykset">
-              <img src="<?php echo $image; ?>" class="top-banner" alt="Roseprint" />
-            </a>
+              <img src="<?php echo $image; ?>" class="top-banner" alt="Olemme avoinna arkisin 9.00 - 14.00" />
           </div>
         </div>
       <!-- END TEMP -->
