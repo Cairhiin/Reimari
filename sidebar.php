@@ -12,7 +12,7 @@
 	        			if ($id == "liked"): 
 	        				$query = array('date_query' => 
 	        					array(array('after' => '90 days ago')), 
-	        					'posts_per_page' => 5, 
+	        					'posts_per_page' => 10, 
 	        					'cat' => $cat, 
 	        					'meta_key' => 'wpb_post_views_count', 
 	        					'orderby' => 'meta_value_num', 
@@ -23,7 +23,7 @@
 	        		<?php  
 	        			else: 
 	        				$query = array (
-			                  'posts_per_page' => 6,
+			                  'posts_per_page' => 10,
 			                  'cat' => $cat,
 			                  'orderby' => 'date',
 			                  'order'   => 'DESC',
