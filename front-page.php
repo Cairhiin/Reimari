@@ -61,27 +61,18 @@
       <main class="container-fluid" id="main-page">
 
       <!--TEMPORARY FOR BANNER  -->
-        <!-- <div class="container">
+ 
+        <div class="container">
           <div class="row">
             <?php 
               $myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/'; 
-              $image = $myImagesDir . "hamina-vanhat-ilmakuvat.png";
+              $image = $myImagesDir . "Banner_OP.png";
             ?>
-            <a href="http://www.reimari.fi/ilmakuvat/" target="_self"><img src="<?php echo $image; ?>" class="top-banner" alt="Hamina ilmakuvat" /></a>
-                
-          </div>
-        </div> -->
-        <!-- <div class="container">
-          <div class="row">
-            <?php 
-              $myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/'; 
-              $image = $myImagesDir . "Banner_roseprint.png";
-            ?>
-            <a href="/yritykset">
+            <a href="/2020/11/10/pienikin-pankki-voi-tarjota-tayden-palvelun/">
               <img src="<?php echo $image; ?>" class="top-banner" alt="Roseprint" />
             </a>
           </div>
-        </div> -->
+        </div> 
         
       <!-- END TEMP -->
      

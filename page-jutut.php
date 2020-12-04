@@ -13,9 +13,11 @@ get_header(); ?>
           <div class="row">
             <?php 
               $myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/'; 
-              $image = $myImagesDir . "auki.png";
+              $image = $myImagesDir . "Banner_OP.png";
             ?>
-              <img src="<?php echo $image; ?>" class="top-banner" alt="Olemme avoinna arkisin 9.00 - 14.00" />
+            <a href = "/2020/11/10/pienikin-pankki-voi-tarjota-tayden-palvelun/">
+              <img src="<?php echo $image; ?>" class="top-banner" alt="Osuuspankki" />
+            </a>
           </div>
         </div>
       <!-- END TEMP -->

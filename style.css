@@ -1273,7 +1273,7 @@ textarea {
 }
 
 .category-nakoislehti {
-	background-color: white;
+	
 }
 
 .entry-header h1 {
@@ -3067,6 +3067,7 @@ Yritykset Page
 #yritykset .main {
 	padding-left: 0;
 	padding-right: 0;
+	margin: 2em 0;
 }
 
 #yritykset article {
@@ -3100,6 +3101,9 @@ Yritykset Page
 	background-color: #E3C286;
 }
 
+.op_miehikkala {
+	background-color: #F28A40;
+}
 
 /*
 Yritykset Single Page
@@ -3170,6 +3174,10 @@ Yritykset Single Page
 	background-color: #E3C286;
 }
 
+#yritykset-single + .entry-content .op_miehikkala + .wp-caption-text {
+	background-color: #F28A40;
+}
+
 #yritykset-single + .entry-content p {
 	margin-left: 30px;
 	margin-right: 30px;
@@ -3195,8 +3203,28 @@ Yritykset Single Page
 	margin-top: -20px;
 }
 
+#yritykset-single + .entry-content .info-bar {
+	margin: 2em 20px;
+}
+
+#yritykset-single + .entry-content .info-bar p {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	text-align: center;
+}
+
+#yritykset-single + .entry-content .info-bar div img {
+	margin: 0;
+}
+
 article.hentry {
 	margin-bottom: -1em;
+}
+
+.small-gutter > [class*="col-"] {
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 /* 
@@ -3563,6 +3591,10 @@ New Jutut Page
 	border: 1px solid #4E342E;
 }
 
+/* image fix */
+.entry-content figure {
+	margin: 1em 70px;
+}
 
 /* Content Tables */
 
