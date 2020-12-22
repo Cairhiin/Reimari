@@ -7,7 +7,7 @@
 ini_set("pcre.backtrack_limit", "-1");
 get_header(); ?>
 
-	<main class="container-fluid article-front" id="main">
+	<main class="container-fluid article-front" id="nakoislehti">
 
      <!--TEMPORARY FOR BANNER  -->
         <!-- <div class="container">

@@ -1217,6 +1217,11 @@ textarea {
 	padding: 15px 0 15px 0;
 }
 
+.category-nakoislehti .entry-content {
+	padding: 0;
+	margin: -10px 0 0 0;
+}
+
 .entry-content ol {
 	margin: 0 50px 0 50px;
 	font-family: "Exo 2";
@@ -3594,6 +3599,21 @@ New Jutut Page
 /* image fix */
 .entry-content figure {
 	margin: 1em 70px;
+}
+
+.entry-content figure {
+	margin: 2em 0;
+}
+
+#juttu-content .wp-caption .wp-caption-text {
+	background: #333;
+	margin: 0;
+	padding: 10px;
+	text-align: left;
+	color: white;
+	min-height: 75px;
+	font-family: 'exo 2';
+	font-size: 15px;
 }
 
 /* Content Tables */

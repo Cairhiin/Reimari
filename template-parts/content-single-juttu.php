@@ -49,7 +49,7 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<div class="entry-content">
+	<div class="entry-content" id="juttu-content">
 
 		<?php the_content(); ?>
 
