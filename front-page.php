@@ -61,7 +61,7 @@
       <main class="container-fluid" id="main-page">
 
       <!--TEMPORARY FOR BANNER  -->
- 
+<!--  
         <div class="container">
           <div class="row">
             <?php 
@@ -72,7 +72,7 @@
               <img src="<?php echo $image; ?>" class="top-banner" alt="Roseprint" />
             </a>
           </div>
-        </div> 
+        </div>  -->
         
       <!-- END TEMP -->
      
