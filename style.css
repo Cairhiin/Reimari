@@ -1229,6 +1229,22 @@ textarea {
 	color: #333;
 }
 
+.entry-content .data-table {
+
+}
+
+.entry-content .data-table p {
+	margin: 0;
+}
+
+.entry-content .data-table div:first-child {
+	margin-left: 55px;
+}
+
+.entry-content .data-table div:last-child {
+	margin-right: 55px;
+}
+
 .page-header-search {
 	border: none;
 	margin: 20px 70px 20px 70px;
