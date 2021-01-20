@@ -3126,6 +3126,18 @@ Yritykset Page
 	background-color: #F28A40;
 }
 
+.haminan_autokorjaamo {
+	background-color: black;
+}
+
+#yritykset .haminan_autokorjaamo h4 {
+	color: white;
+}
+
+#yritykset .haminan_autokorjaamo span {
+	color: #e2e2ee;
+}
+
 /*
 Yritykset Single Page
 */
@@ -3197,6 +3209,10 @@ Yritykset Single Page
 
 #yritykset-single + .entry-content .op_miehikkala + .wp-caption-text {
 	background-color: #F28A40;
+}
+
+#yritykset-single + .entry-content .haminan_autokorjaamo + .wp-caption-text {
+	background-color: black;
 }
 
 #yritykset-single + .entry-content p {
@@ -3462,7 +3478,7 @@ New Jutut Page
 
 #main-jutut .content {
 	padding: 1em;
-	height: 200px;
+	height: 210px;
 	overflow: hidden;
 }
 
