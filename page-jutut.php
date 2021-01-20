@@ -7,7 +7,21 @@
 get_header(); ?>
 
 	<main class="container-fluid article-front" id="main-jutut">
-      
+      <!--TEMPORARY FOR BANNER  -->
+ 
+        <div class="container">
+          <div class="row">
+            <?php 
+              $myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/'; 
+              $image = $myImagesDir . "Banner_Autokorjaamo.png";
+            ?>
+            <a href="/2021/01/18/auto-kuin-auto-kaikki-korjataan-ja-huolletaan/">
+              <img src="<?php echo $image; ?>" class="top-banner" alt="Haminan Autokorjaamo" />
+            </a>
+          </div>
+        </div>
+        
+      <!-- END TEMP -->
         <div class="container">     
           <div class="row"> <!-- / 3x .col-lg-4 ** Main articles - Forcing equal height on all 4 columns ** -->
             <div class="col-md-8" id="jutut">
