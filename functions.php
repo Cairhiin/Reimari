@@ -385,6 +385,21 @@ return $query;
 }
 add_filter('pre_get_posts', 'exclude_category');
 
+/**
+ * Wrap the inserted image html with <figure> 
+ * if the theme supports html5 and the current image has no caption:
+ */
+
+add_filter( 'image_send_to_editor', 
+    function( $html, $id, $caption, $title, $align, $url, $size, $alt ) 
+    {
+        if( current_theme_supports( 'html5' )  && ! $caption )
+            $html = sprintf( '<figure>%s</figure>', $html ); // Modify to your needs!
+
+        return $html;
+    }
+, 10, 8 );
+
 function remove_comment_url($arg) {
     $arg = array(
         'title_reply_before' => '',
