@@ -10,6 +10,7 @@
 	get_header(); 
 
 	function display_sidebar_part($cat) {
+		$query = array ('posts_per_page' => 5, 'cat' => $cat);
 		?>
 			<aside>
 	        	<div class="sidebar-header">
@@ -18,6 +19,7 @@
 	        				case 5: ?>
 	        					<h2>Luetuimmat</h2>
 	        				<?php
+	        					$query = array( 'date_query' => array( array( 'after' => '90 days ago' ) ), 'posts_per_page' => 5, 'cat' => $cat, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) ;
 	        				break;
 	        				case 6: ?>
 	        					<h2>Pääkirjoitus</h2>
@@ -32,8 +34,7 @@
             	</div>
             	<div class="sidebar-content">
         			<ul>
-		<?php	
-		$query = array( 'date_query' => array( array( 'after' => '90 days ago' ) ), 'posts_per_page' => 5, 'cat' => $cat, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) ; 
+		<?php			
 		$the_query = new WP_Query( $query );    
 		while ($the_query -> have_posts()) : $the_query -> the_post()
 		?>
