@@ -1374,7 +1374,7 @@ textarea {
 }
 
 .entry-content {
-	padding-bottom: 0px;
+	background-color: white;
 }
 
 .post-background-archive:nth-last-child(2) {
