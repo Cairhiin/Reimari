@@ -3546,6 +3546,14 @@ New Jutut Page
   }
 }
 
+.jutut .entry-content .row.indented {
+	margin: 0 70px;
+}
+
+.jutut .entry-content .row.indented > [class*="col-"] {
+	padding-left: 0;
+}
+
 .voted {
 	background-color: #80CBC4 !important;
 	color: #222;

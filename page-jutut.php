@@ -57,7 +57,7 @@ get_header(); ?>
                               <a href="<?php the_permalink(); ?>">
                                 <div class="info">
                                     <h2><?php the_title(); ?></h2>
-                                    <p class="subheader"><?php the_time('j.n.'); ?> | <?php the_author(); ?></p>
+                                    
                                 </div>
                               </a>
                             </div>
