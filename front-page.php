@@ -63,7 +63,7 @@
 
       <!--TEMPORARY FOR BANNER  -->
  
-        <div class="container">
+        <!-- <div class="container">
           <div class="row">
             <?php 
               $myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/'; 
@@ -73,7 +73,7 @@
               <img src="<?php echo $image; ?>" class="top-banner" alt="Haminan Autokorjaamo" />
             </a>
           </div>
-        </div>
+        </div> -->
         
       <!-- END TEMP -->
      
