@@ -3708,3 +3708,11 @@ New Jutut Page
 .scribd_iframe_embed {
 	height: 1450px;
 }
+
+.category-nakoislehti .addthis_sharing_toolbox {
+	display: none;
+}
+
+.category-nakoislehti .entry-content {
+	margin-bottom: 2em;
+}

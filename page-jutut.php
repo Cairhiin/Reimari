@@ -9,7 +9,7 @@ get_header(); ?>
 	<main class="container-fluid article-front" id="main-jutut">
       <!--TEMPORARY FOR BANNER  -->
  
-        <div class="container">
+        <!-- <div class="container">
           <div class="row">
             <?php 
               $myImagesDir = get_bloginfo('url').'/wordpress/wp-content/themes/reimari/images/'; 
@@ -19,7 +19,7 @@ get_header(); ?>
               <img src="<?php echo $image; ?>" class="top-banner" alt="Haminan Autokorjaamo" />
             </a>
           </div>
-        </div>
+        </div> -->
         
       <!-- END TEMP -->
         <div class="container">     
