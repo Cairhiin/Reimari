@@ -2574,7 +2574,11 @@ h4.special-header {
 }
 
 #loadExtraResults {
-	margin-top: 25px;
+	margin-top: 1em;
+}
+
+#loadExtraResults > div, #loadExtraResults .google-auto-placed {
+	margin-bottom: 2em;
 }
 
 .loadButton, .loadButtonJuttu, .loadButtonTekstari {
