@@ -124,9 +124,11 @@ get_header(); ?>
       <article id="post-<?php the_ID(); ?>" <?php post_class('entry') ?>>
         
         <div class="entrycontent">
-          <?php $image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
-          <img src="<?php echo $image ?>" alt="Reimari" />
-          <h4 class="entrytitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+          <a href="<?php the_permalink(); ?>">
+            <?php $image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
+            <img src="<?php echo $image ?>" alt="Reimari" />
+            <h4 class="entrytitle"><?php the_title(); ?></h4>
+          </a>
         </div>
       </article>
 	</div>
