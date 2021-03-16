@@ -56,7 +56,12 @@ get_header(); ?>
                             <div class="col-xs-8">
                               <a href="<?php the_permalink(); ?>">
                                 <div class="info">
-                                    <h2><?php the_title(); ?></h2>
+                                    <h2>
+                                      <?php the_title(); ?>
+                                      <span class="text-muted">
+                                        <?php the_time('j.n.'); ?>    
+                                      </span>
+                                    </h2>
                                     
                                 </div>
                               </a>
