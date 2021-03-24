@@ -50,22 +50,21 @@ get_header(); ?>
                   ?>
                         <article class="col-md-6 content-small">
                           <div class="row">
-                            <div class="col-xs-4">
-                              <img class="img-article-feature" src="<?php echo $image ?>" alt="Feature image" />
-                            </div>
-                            <div class="col-xs-8">
-                              <a href="<?php the_permalink(); ?>">
-                                <div class="info">
-                                    <h2>
-                                      <?php the_title(); ?>
-                                      <span class="text-muted">
-                                        <?php the_time('j.n.'); ?>    
-                                      </span>
-                                    </h2>
-                                    
-                                </div>
-                              </a>
-                            </div>
+                            <a href="<?php the_permalink(); ?>">
+                              <div class="col-xs-4">
+                                <img class="img-article-feature" src="<?php echo $image ?>" alt="Feature image" />
+                              </div>
+                              <div class="col-xs-8">
+                                  <div class="info">
+                                      <h2>
+                                        <?php the_title(); ?>
+                                        <span class="text-muted">
+                                          <?php the_time('j.n.'); ?>    
+                                        </span>
+                                      </h2>    
+                                  </div>
+                              </div>
+                            </a>
                           </div>
                         </article> 
                         <?php if ($i % 2 == 0) { ?>                
